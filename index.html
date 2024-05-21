@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Home Page : Nicholas Green</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">     <style>
         html {
@@ -40,122 +40,11 @@
             transition: all 200ms;
             transition-timing-function: ease-in-out;
         }
-
-        .gallery {
-            margin-left: 10vw;
-            margin-right: 10vw;
-            margin-bottom: 5vw;
-
-            display: grid;
-            grid-template-columns: repeat(2, 39.25vw);
-            column-gap: 1vw;
-            row-gap: 5vw;
-        }
-
-        .gallery_item {
-            max-width: 100%;
-            
-            text-align: center;             
-            font-family: 'Secular One';
-            color:rgb(187, 187, 187);
-            border: 0.1vmax dashed orange;
-            opacity: 0.75;
-
-        }
-        .gallery a{
-            text-decoration: none;
-        }
-
-        .gallery a:visited{
-            color: inherit; 
-        }
-
-        .gallery a div {
-            --bordersize: 0em;
-
-            box-shadow: inset 0 0 1em var(--bordersize) black;
-            padding: var(--bordersize);
-            margin: auto;
-            max-width: 90%;
-        }
-
-        .gallery_item img {
-            position: relative;
-            z-index: -1;
-            display: block;
-            margin: auto;
-            max-width: 100%;
-        }
-
-        .gallery_item p{
-            font-size: 100%;
-        }
-
-        .gallery_item h1{
-            margin: 0;
-            font-size: 200%;
-        }
-
-        .gallery_item:hover{
-            opacity: 1;
-        }
-
-
     </style>
 </head>
 
 <div class = "topbar">
-    <h1>Example Projects</h1>
-</div>
-
-<div class = gallery>
-
-    <div class="gallery_item">
-        <a target="blank" href="">
-            <h1>Master's Thesis <br> Neural Network based Digital Twin of a Half-Bridge LLC Resonant Converter</h1>
-
-            <div>
-                <img src="imgs/LLC_thumbnail.png" onerror="this.onerror=null;this.src = 'errorTEMP.png'" alt="IMAGE MISSING">
-            </div>
-        </a>
-        <p>
-            My Master's Thesis project used Neural Networks to predict the internal parameters of a power converter circuit. The goal is to reduce the sensing and modeling overhead needed
-            to predict circuit parameters that are hard to measure directly include switch parasitics, and other circuit components as these can drift overtime due to degradation. 
-            After training the Neural Networks (one for each output), the range of the Mean Absolute Errors for all parameters was from 0.3% to 7%, 
-            with an average over all parameters of 2.3%.
-        </p>
-    </div>
-
-    <div class="gallery_item">
-        <a target="blank", href="https://github.com/greenestnick/Simple_Bayesian_Derblurring">
-            <h1>Bayesian Image Deblurring</h1>
-
-            <div>
-                <img src="imgs/deblur_thumbnail.png" onerror="this.onerror=null;this.src = 'errorTEMP.png'" alt="IMAGE MISSING">
-            </div>
-        </a>
-        <p>
-            A custom Bayesian algorithm was used to deblur an image with a known Gaussian kernel form. By using Bayes' theorem and Metropolis-Hastings MCMC a non-blurred prediction is 
-            generated, which can then be blurred and compared with the input image. Over a series of iterations, the error is reduced until a final image is produced. 
-        </p>
-    </div>
-
-    <div class="gallery_item">
-        <a target="blank", href="https://github.com/greenestnick/RaycasterEngine", rel="author">
-            <h1>Raycaster Graphics Engine</h1>
-
-            <div>
-                <img src="imgs/raycaster_thumbnail.png" onerror="this.onerror=null;this.src = 'errorTEMP.png'" alt="IMAGE MISSING">
-            </div>
-        </a>
-        <p>
-        This projects reimplements the 2.5 Graphics technique in games like Wolfenstein. These class of games us a 2D grid combined with raycasting to draw cubes where the wall height is 
-        related to the distance to the player. Interesting features of this game engine include textured walls and floor, different textures for each wall face, transparent sprites, directional sprites,
-        transparent walls and doors, and the ability to look up and down.
-        </p>
-    </div>
-
-
+    <h1>Home Page</h1>
 </div>
 
 
