@@ -1,0 +1,9 @@
+:root{
+    --darktone : rgb(5, 12, 24); 
+    --background_color: rgb(10, 24, 48); 
+    --midtone : rgb(20, 48, 96);
+    --highlight_color: ghostwhite;
+    --accent: aquamarine; 
+}
+
+/*http://davidbau.com/colors/*/
