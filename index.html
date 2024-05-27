@@ -17,72 +17,76 @@
 
         body {
             margin: 0;
+            font-family: "Lucida Console", Courier, monospace;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         header{
             max-height: 10vh;
             height: 10vh;
+            width: 100%;
 
             box-shadow: 0 0.1ch 5ch var(--darktone);
             
             overflow: visible;
 
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
+            /* display: grid;
+            grid-template-columns: repeat(20, 1fr); */
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
 
-            .main_icon{
-                grid-column: span 1;
-                min-height: 0%;
-                
-                display: flex;
-                justify-content: left;
-                align-items: center;
+            background-color:darkslateblue; 
 
-                img{
-                    border: 1px solid var(--accent);
-                    max-width: calc(100% - 2px);
-                    max-height: calc(100% - 2px);
-                    object-fit: scale-down;
-                }
+            & > img{
+                flex: 0 1 auto;
+                box-sizing: border-box;
+                border: 1px solid var(--accent);
+                height: 100%;
+                object-fit: scale-down;
             }
-            
-            p{
-                font-family: "Lucida Console", Courier, monospace;
-                color: var(--highlight_color);
-                margin: 0 0 0 2%;
-                font-size: 5vmin;
-                grid-column: span 5;
 
-                /* background-color: lawngreen; */
+            
+            & > p{
+                color: var(--highlight_color);
+                font-size: 5vmin;
+                flex: 0 1 auto;
+                /* grid-column: span 5; */
+                background-color: lawngreen;
+
 
                 display: flex;
-                justify-content: left;
+                justify-content: center;
                 align-items: center;
             }
 
             .social_link_icons{
-                grid-column: span 2;
+                /* grid-column: span 2; */
+                flex: 0 1 auto;
+                max-width: 12%;
+
 
                 display: flex;
-                justify-content: left;
-                align-items: center;
+                flex-direction: row;
 
-                /* background-color: maroon; */
-                min-height: 0%;
+                background-color: maroon;
+                
 
                 a{
                     max-width: 50%;
                     max-height: 100%;
                     height: 100%;
-                    width: 30%;
-
-                    display: flex;
-                    justify-content: left;
-                    align-items: center;
                     
                     margin: 0 0.5vw;
 
-                    /* background-color: pink; */
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    background-color: pink;
 
                     img{
                         max-height: 100%;
@@ -95,16 +99,16 @@
 
             ol{
                 list-style-type: none;
-                font-family: "Lucida Console", Courier, monospace;
                 margin: 0; /*By default, lists have margin. */
+                flex: 2 1 auto;
 
-                grid-column: span 12;
+                /* grid-column: span 12; */
 
                 display: flex;
                 justify-content: right;
                 align-items: center;
 
-                /* background-color: darkgoldenrod; */
+                background-color: darkgoldenrod;
 
                 li{
                     color: var(--highlight_color);
@@ -117,6 +121,54 @@
 
         }
 
+        .gallery_area{
+            color: var(--highlight_color);
+            width: 80%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .gallery_title{
+                font-size: 2vw;
+            }
+
+            .gallery{
+                display: grid;
+                grid-template-columns: repeat(3, 33%);
+                justify-content: center;
+
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        .gallery_item{
+            margin: 2vw;
+            background-color: var(--midtone);
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: first baseline;
+
+            .gallery_item_title{
+                margin: 0;
+
+                font-size: 2vw;
+                background-color: red;
+            }
+            
+            img{
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: scale-down;
+            }
+
+
+        }
+
     </style>
 </head>
 
@@ -124,10 +176,8 @@
 <body>
 
     <header>
-        <div class="main_icon">
-            <img src="./imgs/logo.png" alt="IMAGE MISSING">
-        </div>
 
+        <img src="./imgs/logo.png" alt="IMAGE MISSING">
         
         <p>Nicholas Green</p>
 
@@ -143,7 +193,32 @@
 
     </header>
 
-    
+    <div class="gallery_area">
+        <p class="gallery_title">Project Gallery</p>
+        
+        <div class="gallery">
+
+        
+            <div class="gallery_item">
+                <img src="imgs/LLC_thumbnail.png" alt="IMAGE MISSING">
+                <p class="gallery_item_title">Item Title</p>
+            </div>
+
+            <div class="gallery_item">
+                <img src="imgs/deblur_thumbnail.png" alt="IMAGE MISSING">
+                <p class="gallery_item_title">Item Title</p>
+            </div>
+
+            <div class="gallery_item">
+                <img src="imgs/raycaster_thumbnail.png" alt="IMAGE MISSING">
+                <p class="gallery_item_title">Item Title</p>
+            </div>
+            
+
+        </div>
+
+    </div>
+
 </body>
 
 
