@@ -86,7 +86,7 @@
 
                         /* background-color: pink; */
                         border-radius: 3vw;
-                        &:hover{
+                        &:hover, &:active{
                             box-shadow: 0 0 10ch 0.4ch var(--accent);
                         }
 
@@ -125,7 +125,7 @@
                         color: var(--highlight_color);
                     }
 
-                    &:hover{
+                    &:hover, &:active{
                         color: var(--accent);
                         background-color: var(--midtone);
                     }
@@ -175,6 +175,7 @@
             .gallery_item_title{
                 margin: 0;
                 font-size: 2vw;
+                text-decoration: none;
             }
             
             img{
@@ -188,7 +189,7 @@
                 color: var(--highlight_color);
             }
 
-            &:hover{
+            &:hover, &:active{
                 color: var(--accent);
 
                 & .gallery_item_title{
