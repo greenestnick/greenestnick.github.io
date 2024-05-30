@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Resume Page</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">     
     
@@ -85,10 +85,6 @@
                         justify-content: center;
 
                         /* background-color: pink; */
-                        border-radius: 3vw;
-                        &:hover{
-                            box-shadow: 0 0 10ch 0.4ch var(--accent);
-                        }
 
                         img{
                             max-height: 100%;
@@ -136,71 +132,6 @@
 
         }
 
-        .gallery_area{
-            color: var(--highlight_color);
-            width: 80%;
-            height: 100%;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .gallery_title{
-                font-size: 3vw;
-                padding: 0.1ch 1ch;
-                border: 1px solid var(--accent);
-            }
-
-            .gallery{
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-
-                max-width: 100%;
-                width: 100%;
-            }
-        }
-
-        .gallery_item{
-            margin: 2vw;
-            /* background-color: var(--midtone); */
-            max-width: 40%;
-            text-decoration: none;
-            
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            .gallery_item_title{
-                margin: 0;
-                font-size: 2vw;
-            }
-            
-            img{
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: scale-down;
-                border-radius: 0.5vw;
-            }
-
-            &:visited{
-                color: var(--highlight_color);
-            }
-
-            &:hover{
-                color: var(--accent);
-
-                & .gallery_item_title{
-                    font-weight: bold;
-                }
-
-                & img{
-                    box-shadow: 0 0 5vw 0.1ch var(--highlight_color);
-                }
-            }
-
-        }
 
     </style>
 </head>
@@ -220,37 +151,12 @@
         </div>
 
         <ol>
-            <li><a href="./index.html" style="color:var(--accent)">Home</a></li>
-            <li><a href="./resume.html">Resume</a></li>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./resume.html" style="color:var(--accent)">Resume</a></li>
         </ol>
 
     </header>
 
-    <div class="gallery_area">
-        <p class="gallery_title">Project Gallery</p>
-        
-        <div class="gallery">
-
-        
-            <a class="gallery_item" href="./resume.html">
-                <img src="imgs/LLC_thumbnail.png" alt="IMAGE MISSING">
-                <p class="gallery_item_title">Master's Thesis</p>
-            </a>
-
-            <a class="gallery_item" href="./resume.html">
-                <img src="imgs/deblur_thumbnail.png" alt="IMAGE MISSING">
-                <p class="gallery_item_title">Bayesian Deblurring</p>
-            </a>
-
-            <a class="gallery_item" href="./resume.html">
-                <img src="imgs/raycaster_thumbnail.png" alt="IMAGE MISSING">
-                <p class="gallery_item_title">Raycaster Engine</p>
-            </a>
-            
-
-        </div>
-
-    </div>
 
 </body>
 
