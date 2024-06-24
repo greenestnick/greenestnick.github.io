@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Bayesian Deblurring</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">     
+    
+    <link rel="stylesheet" type="text/css" href="./../pallet.css">
+    <link rel="stylesheet" type="text/css" href="./project.css">
+
+    <style>
+        html {
+            background-color: var(--background_color)
+        }
+
+        body {
+            margin: 0;
+            font-family: "Lucida Console", Courier, monospace;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header{
+            max-height: 10vh;
+            height: 10vh;
+            width: 100%;
+
+            box-shadow: 0 0.1ch 5ch var(--darktone);
+            
+            overflow: visible;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+
+            .header_personal{
+
+                max-width: 40%;
+
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+
+                 > img{
+                    box-sizing: border-box;
+                    border: 1px solid var(--accent);
+                    height: 100%;
+                    object-fit: scale-down;
+                }
+
+                p{
+                    display: flex;
+                    align-self: center;
+                    justify-self: center;
+                    color: var(--highlight_color);
+                    font-size: 5vmin;
+                    margin: 1vw;
+                }
+
+                .social_link_icons{
+                    display: flex;
+                    flex-direction: row;
+                    max-width: min-content;
+                    min-width: 20vmin;
+
+                    
+                    a{
+                        max-width: 50%;
+                        min-width: 50%;
+                        height: 100%;
+
+                        margin: 0 0.1vw;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 3vw;
+                        &:hover, &:active{
+                            box-shadow: 0 0 10ch 0.4ch var(--accent);
+                        }
+
+                        img{
+                            max-height: 100%;
+                            max-width: 100%;
+                            object-fit: scale-down;
+                        }
+
+                        
+                    }
+                    
+                }
+
+            }
+
+            
+            ol{
+                list-style-type: none;
+                margin: 0; /*By default, lists have margin. */
+                margin-left: auto;
+
+                display: flex;
+                justify-content: right;
+                align-items: center;
+
+                a{
+                    text-decoration: none;
+                    font-size: 4vmin;
+                    margin: 0 1vw;
+                    border: 1px solid var(--accent);
+                    padding: 0.5vw;
+
+                    &:visited{
+                        color: var(--highlight_color);
+                    }
+
+                    &:hover{
+                        color: var(--accent);
+                        background-color: var(--midtone);
+                    }
+                }
+
+                
+            }
+
+        }
+
+        table {
+            width: min-content;
+            margin: 1vw auto;
+
+            border-collapse: collapse;
+            border: 4px solid var(--dark_accent);
+            letter-spacing: 1px;
+
+            background-color: black;
+
+            td{
+                border: 1px solid var(--dark_accent);
+                text-align: center;
+                padding: 0vw 1vw;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="header_personal">
+            <img src="../img/logo.png" alt="IMAGE MISSING">
+            <p>Nicholas Green</p>
+            <div class="social_link_icons">
+                <a href="https://github.com/greenestnick" target="_blank"><img src="../img/github_icon.png" alt="IMAGE MISSING"></a>
+                <a href="https://www.linkedin.com/in/nick-g-55689a104/" target="_blank"><img src="../img/linkedin_icon.png" alt="IMAGE MISSING"></a>
+            </div>
+        </div>
+
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+        </ol>
+
+    </header>
+
+    <div class="proj_area">
+        <hgroup>
+            <h1>Bayesian Deblurring</h1>
+            <a href="https://github.com/greenestnick/Simple_Bayesian_Derblurring" target="_blank">
+                <img src="../img/github_icon.png" alt="GITHUB_LOGO">
+                <p>For the full report and Matlab scripts</p> 
+            </a>
+        </hgroup>
+
+        <section>
+            <h2>The Problem</h2>
+            <img src="../img/img_proj/problem.png" alt="IMAGE MISSING">
+            <p>This projects goal is to unblur an image using <strong>Bayesian Statistics</strong> and <strong>Markov Chain Monte Carlo</strong> techniques. 
+                An image can be blurred in different ways making the situation difficult. The problem is simplified to only 
+                consider a known Gaussian blur meaning the algorithm must effectively deconvolve the blur with the blurred image. 
+            </p>
+        </section>
+        
+        <section>
+            <h2>The Methods</h2>
+                <p>The algorithm will work by proposing a hypothesized image and comparing it to the previous hypothesized image.
+                    This process is actually done for each pixel rather than the whole image at once to help reduce the dimensionality.
+                    The way in which the Bayesian posterior is defined will determine how well the algorithm works. 
+                </p>
+
+                <h3>Defining Bayes Theorem</h3>
+                    <p>Bayes Theorem can be define as such where Y is a hypothesized reconstructed image, X is the given blurred image, and K is the Gaussian Blur Kernel.
+                        Each component is given a name defined below and must be defined starting with the Likelihood.
+                    </p>
+                    <img src="../img/img_proj/bayes_eq.png" style="width:50%;" alt="IMAGE MISSING">
+
+                    <p>Bayes theorem must ask the question “what are the odds that the blurred image is produced by the hypothesized clear image” in the 
+                        form of the Likelihood term. This can be done by simply comparing the given blurred image and a blurred version of the hypothesized 
+                        image in the form of a Gaussian Curve creating an error term</p>
+
+                    <figure>
+                        <img src="../img/img_proj/neighborhoodprior.png" style="max-width: 25vw;" alt="IMAGE MISSING">
+                        <figcaption>Showing a guassian prior over an example pixel's neighborhood</figcaption>
+                    </figure>
+                    <p>The prior represents the odds of a hypothesized image given all prior information regardless of the blurred image. A simple neighborhood prior 
+                        is used which basically enforces the idea that adjacent pixels tend to be close in value. For each pixel a Gaussian is constructed where its 
+                        mean is the current pixel's value. This idea can be seen in the image above. Here, the prior enforces a dependency of pixels on each other. Without this
+                        each pixel would try to optimize itself without any consideration for the bigger picture. 
+                    </p>
+
+                <h3>Metrpolis-Hastings Algorithm</h3>
+                    <p>
+                        A rough probability can be assigned to a hypothesized image. This probability can also be compared to another hypothesis by the ratio called 
+                        the Acceptance Ratio. All that is left is to search the space of possible hypotheses. This will be done using the Metropolis-Hastings MCMC technique.
+                        
+                        First a hypotheses is generated by randomly modifying each pixel by adding a sample from the normal distribution multiplied by a step size.
+                        The Acceptance Ratio of the new hypotheses and the previous is calculated and clamped between 0 and 1. The new hypothesis is randomly accepted with odds
+                        equal to itself. A 50% Acceptance Ratio is accepted half the time. It is useful to accept bad hypothesis to avoid getting stuck in a local optimum. This process repeats
+                        until the change in RMS error between images is too small. 
+                    </p>
+        </section>
+
+        <section>
+            <h2>Results</h2>
+                <figure>
+                    <img src="../img/img_proj/algo_anim_2.gif" alt="IMAGE MISSING">
+                    <figcaption>Animation of algorithm finding a solution taken at increasing intervals</figcaption>
+                </figure>
+
+                <p>The results show the original image on the top row, the initial blurred image on the second row, and finally, the reconstructed image on the 
+                    bottom row. The RMS error is given between the reconstruct and original image as well as the number of iterations required.
+                </p>
+
+                <figure>
+                    <div class="img_group">
+                        <img src="../img/img_proj/res1.png" alt="IMAGE MISSING">
+                        <img src="../img/img_proj/res2.png" alt="IMAGE MISSING">
+                    </div>
+                    <figcaption>Result Figures: Six example images for a 9x9 gaussian blur kernel</figcaption>
+                </figure>
+                
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>Bird</td>
+                        <td>Two Dice</td>
+                        <td>Pagoda</td>
+                        <td>Dice Rolled</td>
+                        <td>Dice Stacked</td>
+                        <td>Colosseum</td>
+                    </tr>
+                    <tr>
+                        <td>RMS Blurred</td>
+                        <td>13.84</td>
+                        <td>14.05</td>
+                        <td>18.98</td>
+                        <td>14.66</td>
+                        <td>13.07</td>
+                        <td>13.87</td>
+                    </tr>
+                    <tr>
+                        <td>RMS Reconstructed</td>
+                        <td>8.85</td>
+                        <td>7.43</td>
+                        <td>13.23</td>
+                        <td>9.25</td>
+                        <td>8.29</td>
+                        <td>9.71</td>
+                    </tr>
+                    <tr>
+                        <td>% Improvement</td>
+                        <td>36%</td>
+                        <td>47%</td>
+                        <td>30%</td>
+                        <td>37%</td>
+                        <td>37%</td>
+                        <td>30%</td>
+                    </tr>
+                </table>
+
+                <p>This table shows the RMS error improvement after reconstruction as a percentage of the given blurred image RMS error</p>
+        </section>
+    </div>
+
+</body>
+
+
+</html>

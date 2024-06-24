@@ -1,0 +1,178 @@
+.proj_area{
+    color: var(--highlight_color);
+    width: 60%;
+    height: 100%;
+    margin: 5vh 0 10vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    hgroup{
+        width: 100%;
+        margin: 4vh 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        background-color: var(--darktone);
+        box-shadow: 0 2vh 4vw var(--darktone);
+
+        h1{
+            text-align: center;
+            font-size: 3vw;
+            padding: 0.1ch 1ch;
+            margin-bottom: 0;
+            border: 1px solid var(--accent);
+        }
+
+        a{            
+            margin-top: 0;
+            margin: 1em 0;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            text-decoration: none;
+
+            p{
+                margin: 0 1em;
+                text-decoration: inherit;
+                font-weight: lighter;
+                font-style: italic;
+            }
+
+            img{
+                max-height: 3em;
+            }
+
+            &:visited{
+                color: inherit;
+            }
+
+            &:hover p, &:active p{
+                color: var(--accent);
+                font-size: large;
+            }
+
+        }
+
+    }
+
+    section{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 4vh 0;
+        background-color: var(--darktone);
+        box-shadow: 0 2vh 4vw var(--darktone);
+
+        font-size: 1vw;
+        line-height: 1.5;
+        text-align: left;
+
+        p{
+            padding: 0 2vw;
+            margin-top: 1em;
+        }
+
+        h2{
+            width: 75%;
+            font-size: 2vw;
+            padding: 0.2ch 1ch;
+            margin: 1em 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent);
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        h3{
+            font-size: 1.5vw;
+            text-align: center;
+            padding: 0;
+            margin: 1em 0 0 0;
+            text-decoration: underline var(--accent);
+        }
+
+        mark, em{
+            font-size: 1.1vw;
+            font-weight: bolder;
+            font-style: normal;
+            padding: 0.2vw;
+            background-color: var(--midtone);
+            color: var(--highlight_color);
+        } 
+
+        img{
+            max-height: 40vh;
+            object-fit: scale-down;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+        }
+
+        
+        figure{
+            padding: 0;
+            margin: 0;
+            margin-top: 1vh;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .image_group{
+                display: flex;
+                flex-direction: column;
+            }
+
+            img{
+                max-height: 40vh;
+                object-fit: scale-down;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 0;
+            }
+            figcaption{
+                text-align: center;
+                font-style: italic;
+                font-weight: lighter;
+                font-size: smaller;
+                background-color: var(--dark_accent);
+                
+                margin-bottom: 2vh;
+            }
+        }
+
+
+        blockquote{
+            padding: 1em;
+            color: var(--accent);
+            border-inline: 4px solid var(--accent);
+            text-align: right;
+            font-style: italic;
+            font-weight: lighter;
+        }
+    
+        code{
+            padding: 1em;
+            margin: 0 2vw;
+            color: var(--accent);
+            background-color: black;
+            border-inline: 4px solid var(--accent);
+            text-align: left;
+            
+            pre{
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+    }
+
+}
