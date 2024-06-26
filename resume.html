@@ -128,6 +128,121 @@
 
         }
 
+        .resume_area{
+            max-width: 50vw; 
+            margin: 5vh 0;
+            padding: 2vh 2vw;
+
+            display: flex;
+            flex-direction: column;
+
+
+            color: var(--highlight_color);
+            background-color: var(--darktone);
+            box-shadow: 0 2vh 4vw var(--darktone);
+            font-family: monospace;
+
+            > h1{
+                max-width: 75%;
+                margin: 2vw 0 0.5vw 2vw;
+                font-size: 1.75vw;
+
+                border-bottom: 1px solid var(--accent);
+            }
+
+            > ul{
+                list-style: none;
+                border-inline-start: 2px solid var(--accent);
+                position: relative;
+
+                > li{
+                    margin-inline-start: 0vw;
+
+                    margin-bottom: 3vh;
+
+                    display: flex;
+                    flex-direction: column;
+
+                    font-size: 1vw;
+
+                    h1{
+                        font-size: 1.2vw;
+                        margin: 0;
+                        margin-bottom: 1vh;
+                        padding: 0;
+                    }
+
+                    span{
+                        background-color: var(--midtone);
+                        border-radius: 100vw;
+
+                        max-height: 2vw;
+                        max-width: 2vw;
+                        aspect-ratio: 1;
+
+                        display: flex;
+                        justify-content: center;
+                        align-content: center;
+
+                        position: absolute;
+                        inset-inline: -1em;
+                        
+                        img{
+                            max-height: 60%;
+                            max-width: 60%;     
+                        }
+                    }
+
+                    .details{
+                        font-style: italic;
+                        font-weight: lighter;
+                        margin-bottom: 2vh;
+                    }
+
+                    .award{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        
+                        img{
+                            max-height: 2em;
+                            max-width: 2em; 
+                        }
+                    }
+
+                    .thesis{
+                        display: flex;
+                        flex-direction: column;
+                        
+                        a{
+                            margin: 1% 0;
+                            padding: 1%;
+
+                            width: fit-content;
+                            
+                            text-decoration: none;
+                            text-align: center;
+                            border: 1px solid var(--accent);
+                            border-radius: 1vw;
+
+                            &:visited{
+                                color: inherit;
+                            }
+                            &:hover{
+                                color: var(--accent);
+                            }
+                        }
+                        p{
+                            padding: 3% 0 0 0;
+                            padding-left: 0.25vw;
+                            margin: 0;
+                            text-shadow: 0.1em 0.1em 0 var(--dark_accent);
+                        }
+                    }
+
+                }
+            }
+        }
 
     </style>
 </head>
@@ -153,7 +268,84 @@
 
     </header>
 
-    
+    <div class="resume_area">
+        <h1>Experience</h1>
+        <ul>
+            <li>
+                <span><img src="img/img_vec/briefcase.svg" alt="MISSING ICON"></span>
+                <h1>Teaching Assistant</h1>
+                <div class="details">
+                    University at Albany <br>
+                    Fall 2022 - Spring 2023<br> 
+                </div>
+                Working with students during labs and office hours to clarify concepts or aid with assignments. Creation of rubrics and grading of assignments. 
+                Communication of engineering topics, student requirements, or assignment corrections was a key skill further developed.
+
+            </li>
+        </ul>
+
+        <h1>Education</h1>
+        <ul>
+            <li>
+                <span><img src="img/img_vec/grad_cap_thick.svg" alt="MISSING ICON"></span>
+                <h1>MS : Electrical and Computer Engineering</h1>
+                <div class="details">
+                    University at Albany <br>
+                    Fall 2022 - Spring 2024<br>
+                    GPA: 3.96/4.0<br> 
+                </div>
+
+                <div class ="award">
+                    <img src="img/img_vec/award.svg" alt="MISSING ICON">
+                    Outstanding Academic Achievement Award
+                </div>
+
+                <div class="thesis">
+                    <p>Thesis: "Neural Network based Digital Twin for a Half-Bridge LLC Resonant Converter</p>
+                    <a href="">Thesis Link</a>
+                </div>
+
+            </li>
+
+            <li>
+                <span><img src="img/img_vec/grad_cap_thick.svg" alt="MISSING ICON"></span>
+                <h1>BS : Electrical and Computer Engineering</h1>
+                <div class="details">
+                    University at Albany <br>
+                    Fall 2019 - Spring 2022<br>
+                    GPA: 3.99/4.0<br> 
+                    Minored in Physics
+                </div>
+
+                <div class ="award">
+                    <img src="img/img_vec/award.svg" alt="MISSING ICON">
+                    Summa Cum Laude
+                </div>
+                
+                
+
+            </li>
+
+            <li>
+                <span><img src="img/img_vec/grad_cap_thick.svg" alt="MISSING ICON"></span>
+                <h1>AS : Computer Information Systems</h1>
+                <div class="details">
+                    Hudson Valley Community College <br>
+                    Fall 2017 - Spring 2019<br>
+                    GPA: 4.0/4.0<br> 
+                </div>
+
+                <div class ="award">
+                    <img src="img/img_vec/award.svg" alt="MISSING ICON">
+                    Excellence in Computer Information Systems Award
+                </div>
+
+
+            </li>
+
+        </ul>
+
+    </div>
 
 </body>
 
