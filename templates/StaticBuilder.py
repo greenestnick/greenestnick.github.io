@@ -22,7 +22,7 @@ class ProjectEntry():
 ====================================================================================
 '''
 projects = []
-with open('./templates/projects.csv', 'r+') as csvfile:
+with open('./projects.csv', 'r+') as csvfile:
     csv_reader = csv.reader(csvfile)
 
     for row in csv_reader:
@@ -47,8 +47,8 @@ def GalleryItemString(project : ProjectEntry) -> str:
 
     returnStr += OpenTag("div", {'class':'gallery_item'})
     
-    returnStr += "\t" + OpenTag("a", {"class":"gallery_item_link", "target":"_self", "href":"./" + project.fileName})
-    returnStr += "\t\t" + OpenTag("img", {"src":"imgs/" + project.imageName, "alt":"IMAGE MISSING"})
+    returnStr += "\t" + OpenTag("a", {"class":"gallery_item_link", "target":"_blank", "href": project.fileName})
+    returnStr += "\t\t" + OpenTag("img", {"src":"img/" + project.imageName, "alt":"IMAGE MISSING"})
     returnStr += "\t\t" + OpenTag("p", {"class":"gallery_item_title"}, content = project.title)
     returnStr += "\t\t" + CloseTag("p")
     returnStr += "\t" + CloseTag("a")
@@ -71,7 +71,7 @@ def GalleryItemString(project : ProjectEntry) -> str:
 ====================================================================================
 '''
 
-with open("./templates/index.html", 'r+') as html_file:
+with open("./index.html", 'r+') as html_file:
     fileString = html_file.read()
 
 fileParts = fileString.partition("<div class=\"gallery\">")
@@ -82,5 +82,5 @@ for proj in projects:
 fileString += fileParts[2]
 
 
-with open("./index.html", 'w') as html_file:
+with open("./../index_NEW.html", 'w') as html_file:
     html_file.write(fileString)
