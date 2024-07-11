@@ -1,6 +1,7 @@
 .gallery_item{
     margin: 2vw;
     max-width: 40%;
+
     text-decoration: none;
     
     display: flex;
@@ -9,8 +10,10 @@
 
     .gallery_item_link{
         max-width: 100%;
+        max-height: 100%;
+
         text-decoration: none;
-    
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -26,7 +29,8 @@
         
         img{
             max-width: 100%;
-            max-height: 100%;
+            max-height: 40vh;
+
             object-fit: scale-down;
             border-radius: 0.2vw;
         }

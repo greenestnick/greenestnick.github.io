@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Bayesian Deblurring</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">     
+    
+    <link rel="stylesheet" type="text/css" href="./../pallet.css">
+    <link rel="stylesheet" type="text/css" href="./project.css">
+    <style>
+        html {
+            background-color: var(--background_color)
+        }
+
+        body {
+            margin: 0;
+            font-family: "Lucida Console", Courier, monospace;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header{
+            max-height: 10vh;
+            height: 10vh;
+            width: 100%;
+
+            box-shadow: 0 0.1ch 5ch var(--darktone);
+            
+            overflow: visible;
+
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+
+            .header_personal{
+
+                max-width: 40%;
+
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+
+                 > img{
+                    box-sizing: border-box;
+                    border: 1px solid var(--accent);
+                    height: 100%;
+                    object-fit: scale-down;
+                }
+
+                p{
+                    display: flex;
+                    align-self: center;
+                    justify-self: center;
+                    color: var(--highlight_color);
+                    font-size: 5vmin;
+                    margin: 1vw;
+                }
+
+                .social_link_icons{
+                    display: flex;
+                    flex-direction: row;
+                    max-width: min-content;
+                    min-width: 20vmin;
+
+                    
+                    a{
+                        max-width: 50%;
+                        min-width: 50%;
+                        height: 100%;
+
+                        margin: 0 0.1vw;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 3vw;
+                        &:hover, &:active{
+                            box-shadow: 0 0 10ch 0.4ch var(--accent);
+                        }
+
+                        img{
+                            max-height: 100%;
+                            max-width: 100%;
+                            object-fit: scale-down;
+                        }
+
+                        
+                    }
+                    
+                }
+
+            }
+
+            
+            ol{
+                list-style-type: none;
+                margin: 0; /*By default, lists have margin. */
+                margin-left: auto;
+
+                display: flex;
+                justify-content: right;
+                align-items: center;
+
+                a{
+                    text-decoration: none;
+                    font-size: 4vmin;
+                    margin: 0 1vw;
+                    border: 1px solid var(--accent);
+                    padding: 0.5vw;
+
+                    &:visited{
+                        color: var(--highlight_color);
+                    }
+
+                    &:hover{
+                        color: var(--accent);
+                        background-color: var(--midtone);
+                    }
+                }
+
+                
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+
+        <div class="header_personal">
+            <img src="../img/logo.png" alt="IMAGE MISSING">
+            <p>Nicholas Green</p>
+            <div class="social_link_icons">
+                <a href="https://github.com/greenestnick" target="_blank"><img src="../img/github_icon.png" alt="IMAGE MISSING"></a>
+                <a href="https://www.linkedin.com/in/nick-g-55689a104/" target="_blank"><img src="../img/linkedin_icon.png" alt="IMAGE MISSING"></a>
+            </div>
+        </div>
+
+        <ol>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+        </ol>
+
+    </header>
+
+    <div class="proj_area">
+        <hgroup>
+            <h1>Asynchronous FIFO</h1>
+            <time datetime="2024-7">July 2024</time>
+            <a href="https://github.com/greenestnick/AsynchronousFIFO" target="_blank">
+                <img src="../img/github_icon.png" alt="GITHUB_LOGO">
+                <p>Visit the repo for the HDL</p> 
+            </a>
+        </hgroup>
+
+        <section>
+            <h2>The Problem of Clock Domains</h2>
+            <p>
+                Sometimes in digital logic there are multiple "clock domains" that must communicate using different clocks either in frequency or phase.
+                Communication can no longer be guaranteed to occur at the same clock edges making this asynchronous. Furthermore, if one clock
+                is faster, communications will needed to be temporarily buffered until the slower clock can catch up. Thus two problems need to be solved: 
+                buffering and asynchronous signaling. 
+            </p>
+
+        </section>
+        
+        <section>
+            <h2>The Solution</h2>
+
+                <h3>Asynchronous Signaling</h3>
+                <figure>
+                    <img src="../img/img_proj/metastability.png" alt="IMAGE MISSING">
+                    <figcaption>Demonstration of how asynchronous clocks can lead to timing violations and metastability</figcaption>
+                </figure>
+
+                <p>
+                    Imagine a scenario where two latches are trying to communicate only one bit asynchronously.
+                    Eventually a timing violation will occur where an input to a latch is changing during the latch operation. 
+                    Due to the internal capacitances of a latch, some amount of time is
+                    needed to fully sample the bit. If the input changes during this time, a <mark>metastable</mark> state
+                    occurs which is neither a clear binary high nor low, but right between. This state is eventually resolved to a valid binary value
+                    but <strong>the state it resolves to is nondeterministic</strong> and therefore the wrong information could 
+                    be communicated during these events. Moreover, if a metastable state is seen by other logic before it resolves,
+                    a cascade of more errors will ensue. The figure above demonstrates this occurring when "clock 1" latches a high bit
+                    changing "data 1". This happens at the same time "clock 2" is trying to latch in "data 1" causing metastability due to
+                    a "Hold Time" violation. Eventually this metastability resolves before normal operation continues without timing violations.
+                </p> 
+
+                <figure>
+                    <img src="../img/img_proj/synchro.png" alt="IMAGE MISSING" style="width:75%;">
+                    <figcaption>Synchronizer circuit for protection against metastability</figcaption>
+                </figure>
+
+                <p>
+                    The primary goal for now is to ensure the metastability never reaches logic on the other side of the receiving latch.
+                    The simplest way to do that is by adding another latch as in the figure above. As long as the metastability resolves to a valid 
+                    binary state within a clock cycle, the last latch will never be in a metastable state and the rest of the logic is safe. 
+                    This circuit is referred to as a <mark>Synchronizer</mark>. 
+                    The more latches used the more secure the synchronizer is but at the cost of a few clock cycles. 
+                </p>
+
+                <p>
+                    Note that synchronizers <strong>do not</strong> solve the problem of metastable states resolving to a <i>random</i> binary state. 
+                    This only protects against leaking metastability meaning this form of asynchronous communication can still send incorrect information.
+                    After seeing how to buffer information the solutions to working with this lossy communication will be explained. 
+                </p>
+
+
+
+                <h3>Buffering with a FIFO</h3>
+                <p>
+                    A simple way to buffer data and maintain chronological order is a First-In-First-Out (FIFO) buffer.
+                    A FIFO works by having a block of memory that is addressed by a write and read pointer. The end of memory
+                    simply wraps around to the beginning forming a ring buffer. 
+                </p>
+
+
+                <figure>
+                    <img src="../img/img_proj/fifo_still.png" alt="IMAGE MISSING">
+                    <figcaption>FIFO Buffer partly full after some reading and writing</figcaption>
+                </figure>
+
+                <p>
+                    Seen in the animation below is an example of reading and writing occurring. The write pointer always
+                    points to the next free space, and the read points to the last item in the buffer. They can go around
+                    and around the buffer reading and writing until the buffer fills or empties. 
+                </p>
+
+                <figure>
+                    <img src="../img/img_proj/fifo.gif" alt="IMAGE MISSING">
+                    <figcaption>FIFO Buffer writing and reading</figcaption>
+                </figure>
+
+                <p>
+                    If the read and write pointers are at the same address, it is known that the buffer is either full or empty. Either
+                    the write pointer has wrapped around and filled the buffer making it full, or the read pointer has caught up to the 
+                    write pointer and the buffer is empty. The problem arises in differentiating if the write pointer has wrapped around or
+                    the read pointer has caught up. How can we solve this?  
+                </p>
+
+                <figure>
+                    <img src="../img/img_proj/full_empty_problem_fifo.png" alt="IMAGE MISSING" style="width:75%;">
+                    <figcaption>FIFO Buffer empty and full detection using an extra bit</figcaption>
+                </figure>
+
+                <p>
+                    The FIFO uses a simple technique to keep track of the pointers in 
+                    relation to each other. In the example figures, the buffer is 
+                    eight words long meaning it requires a three bit address. If the address is extended to four bits, the last bit will toggle
+                    every time the pointer wraps around the ring. Therefore, this fourth bit keeps track of which cycle it is on. 
+                    If the read and write pointers have the same MSB, they are on the same cycle meaning the buffer must be empty.
+                    If the read and write pointers have different MSB's, they are out of phase by a cycle and the buffer must be full.
+                    Knowing that the read can never pass the write pointer allows these situations to be distinguished.  
+                </p>
+
+
+                <h3>Putting them together</h3>
+                <figure>
+                    <img src="../img/img_proj/fifo_nosynchro.png" alt="IMAGE MISSING">
+                    <figcaption>FIFO Block Diagram (colors represent different clock domains)</figcaption>
+                </figure>
+                <p>
+                    A typical FIFO buffer will work as shown in the figure above. The bulk memory is accessed by a read and write pointer. These pointers
+                    are automatically incremented by a counter when the system is enabled for reading and writing. As discussed before, one extra bit
+                    is required for keeping track of the cycle around the memory. Using the read and write addresses, a comparator circuit can determine
+                    if the buffer is full or empty to avoid overflow and underflow.
+                </p>
+
+                <p>
+                    There is only one problem with this design. In order to compare the read and write addresses the pointer data <strong>must</strong> cross
+                    the clock domain! There is no other way of getting the information across. We are now back to square one trying to 
+                    asynchronously communicate multiple bits!
+                </p>
+
+
+                <figure>
+                    <img src="../img/img_proj/word_synchros.png" alt="IMAGE MISSING">
+                    <figcaption>Array of synchronizers to communicate multiple bits across a clock domain</figcaption>
+                </figure>
+                <p>
+                    One idea is to simply use an array of synchronizers for each bit of the pointer. That will solve the metastability problem, right?
+                    Yes, metastability can be solved with a synchronizer but as originally discussed if the first receiving latch
+                    enters a metastable state it will resolve to a random binary state and accuracy isn't guaranteed.
+                    A consequence of the loss of information in these metastable events is that the communicated address could
+                    be received completely wrong causing the buffer to over or under flow. Imagine if the address changed from a 3
+                    to a 4. This requires all three bits to be synchronized which could end up as any address given a metastable event. 
+                </p>
+
+                <figure>
+                    <img src="../img/img_proj/binary_sequency_changes.png" alt="IMAGE MISSING">
+                    <figcaption>Binary address sequence showing the number of bits needed to be synchronized</figcaption>
+                </figure>
+
+                <p>
+                    Hope is not lost yet! We aren't <i>really</i> back to square one because not all data is equal. The data we want to communicate are addresses
+                    which follow a clean chronological pattern. This means not all bits have to be communicated, but only the bits that change chronologically.
+                    The figure above shows a three bit sequence of binary addresses. The orange highlights show what bits change going down the list chronologically. 
+                    Unfortunately this means there are still situations in which all three bits must be synchronized  risking lossy communication. 
+                </p>
+
+                <figure>
+                    <img src="../img/img_proj/graycode_table.png" alt="IMAGE MISSING">
+                    <figcaption>Binary and Gray Code table showing bit changes chronologically</figcaption>
+                </figure>
+
+                <p>
+                    The solution to this problem are <mark>Gray Codes</mark> which work by rearranging the bits such that only
+                    a single bit change occurs for chronological addresses. The blue highlights in the figure above show the changes that needed to be 
+                    synchronized, of which only one occurs for every line.
+                </p>
+
+                <p>
+                    To summarize, using Gray Codes, the FIFO only needs to synchronize a single bit each clock cycle as the address increments through the 
+                    buffer. While this is good news, won't the synchronizer still lose information if it encounters a metastable event? The answer is yes,
+                    the single bit will still be communicated incorrectly at some point! Unlike binary addressing though, if one bit is wrong it 
+                    will never lead to an overflow or underflow! If an error does occur, the address can only every be one behind which will not break the 
+                    system.
+                </p>
+
+                <figure>
+                    <img src="../img/img_proj/asycnfifo_complete.png" alt="IMAGE MISSING">
+                    <figcaption>Complete Correct FIFO Block Diagram</figcaption>
+                </figure>
+
+                <p>
+                    Adding in Gray Code converters and Synchronizers to the FIFO design yields this final block diagram.
+                </p>
+
+        </section>
+
+        <section> 
+            <h2>Results</h2>
+
+            <p>
+                The system is implemented as shown in the previous figure above. 
+                Note that Verilog cannot simulate metastability nor the lossy communication of a synchronizer so these tests 
+                are not complete enough to validate a FIFO design. Despite this, the logical behavior of the system can be tested.
+                To test the results the FIFO will read and write at different clock speeds. The write is double the frequency of the read 
+                for this example. The memory is eight words long, and increasing integers starting from one will be written.
+            </p>
+
+            <figure>
+                <img src="../img/img_proj/fifores1.png" alt="IMAGE MISSING">
+                <figcaption>Table of time-stamped results from simulation</figcaption>
+            </figure>
+
+            <p>
+                To start the system is first reset such that everything is zeroed out. Notice the <i>Empty</i> flag is high at the start. 
+                Now, the system begins writing and reading. The rightmost columns show what is in memory, as well as the read and write pointer
+                locations. As the systems writes, the write pointer increments with some delay due to the print and internal pointer counter delays. 
+                The system reads nothing for two read cycles due to the empty flag clearing. By the end of the first table, the buffer has five items
+                written to it.
+            </p>
+
+            <figure>
+                <img src="../img/img_proj/fifores2.png" alt="IMAGE MISSING">
+                <figcaption>Table of time-stamped results from simulation</figcaption>
+            </figure>
+
+            <p>
+                Picking up at the next update, the first read operation occurs freeing the first memory slot to be overwritten later.
+                The reading and writing now continue smoothly. The write pointer wraps around at cycle 75. 
+            </p>
+
+
+            <figure>
+                <img src="../img/img_proj/fifores3.png" alt="IMAGE MISSING">
+                <figcaption>Table of time-stamped results from simulation</figcaption>
+            </figure>
+
+            <p>
+               The write is faster than the read so eventually the buffer would fill up. This can be seen at cycle 99 and 102
+               where the write catches up to the read pointer at index 5. The buffer does another read and write triggering a Full flag again 
+               at the last cycle. The Full and Empty flags are delayed as the address must be converted to a gray code, then pass 
+               through the synchronizers, and finally do the compare operation. This delay means that the buffer may appear full or empty for 
+               longer than it is, but this will never lead to an overflow or underflow situation. 
+            </p>
+
+
+        </section>
+    </div>
+
+</body>
+
+
+</html>

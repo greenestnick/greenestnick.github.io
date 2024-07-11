@@ -27,6 +27,15 @@
             border: 1px solid var(--accent);
         }
 
+        time{
+            margin: 0;
+            padding-top: 2%;
+            font-size: 1vw;
+            font-style: italic;
+            color: var(--accent);
+            text-align: center;        
+        }
+
         a{            
             margin-top: 0;
             margin: 1em 0;
