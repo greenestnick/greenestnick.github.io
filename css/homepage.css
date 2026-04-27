@@ -1,0 +1,137 @@
+html {
+    background: url("../img/iss_earth.png");
+    background-size: cover;
+    image-rendering: pixelated;
+
+    font-family: "Share Tech Mono";
+    color: var(--brightest);
+}
+a{
+    color: var(--accent_cool);
+}
+a:hover{
+    background-color: rgb(from var(--bright) r g b /0.5);
+    
+}
+a:visited{
+    color: var(--accent_warm);
+}
+
+
+body{
+    margin: 10vh auto 0 auto;
+    max-width: 1500px;
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2vw;
+}
+
+h1{
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+#button_linkedin{
+    background: url("../img/buttons/button_linkedin.png") no-repeat center;
+    background-size: contain;            
+}
+#button_github{
+    background: url("../img/buttons/button_github.png") no-repeat center;
+    background-size: contain; 
+}
+#button_report{
+    background: url("../img/buttons/button_report.png") no-repeat center;
+    background-size: contain; 
+}
+#button_linkedin:hover, #button_github:hover, #button_report:hover{
+    transform: scale(1.2);
+}
+
+#button_linkedin:active, #button_github:active, #button_report:active{
+    transition: 0s;
+    transform: scale(1.1) skewX(3deg);
+}
+
+
+.side_l{
+    justify-self: right;
+    min-width: 100px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 4vh;
+}
+.side_l > *{
+    background-color: rgb(from var(--dark_tone) r g b /0.75);
+    border: var(--bright) 2px solid;
+}
+
+.about_me > h1 {
+    margin: 1vh 0 0 0;
+}
+.about_me > p {
+    margin: 1vh 0 0 0;
+    height: 25vh; 
+    min-height: 50px;
+    overflow-y: auto;
+    scrollbar-color: var(--bright) transparent;
+    
+    font-size: 1.1rem;
+    background-color: rgb(from var(--midtone) r g b /0.5);
+    padding: 5px 10px 0 10px;
+}
+
+.about_me_buttons{
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px 0;
+    justify-content: space-evenly;
+}
+.about_me a{
+    width:  4rem;
+    height: 4rem;
+    border: none;
+    transition: 0.1s ease-in-out;
+}
+
+.publications{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 5px;
+}
+.publications > h1 {
+    margin: 0;
+}
+.publications > details{
+    padding: 0 5px 0 5px;
+}
+.publications summary{
+    font-weight: 900;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.publications summary:hover{
+    background-color: rgb(from var(--bright) r g b /0.5);
+}
+.publications > details > p {
+    margin-top: 0;
+    color: var(--brightest);
+    background-color: rgb(from var(--midtone) r g b /0.5);
+}
+
+
+.gallery{
+    padding: 1vw;
+    height: fit-content;
+    min-width: 800px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1vw;
+    background-color: rgb(from var(--dark_tone) r g b /0.75);
+}

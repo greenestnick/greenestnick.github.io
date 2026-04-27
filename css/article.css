@@ -1,0 +1,152 @@
+html {
+    background: url("../img/iss_earth.png");
+    background-size: cover;
+    image-rendering: pixelated;
+
+    font-family: "Share Tech Mono";
+    color: var(--brightest);
+}
+
+body{
+    margin: 0;
+}
+
+.main{
+    max-width: 45vw;
+    margin: 0 auto;
+    padding: 0 2vw;
+    
+    background-color: rgb(from var(--dark_tone) r g b /0.8);
+    
+    max-height: 100vh;
+    overflow: auto;
+    scrollbar-color: var(--bright) transparent;
+    scroll-behavior: smooth;
+}
+
+p{
+    font-size: 1.3rem;
+}
+
+header{
+    font-size: 4rem;
+    font-weight: 500;
+    text-align: center;
+    
+    margin: 2vh 0 0 0;
+
+    display: flex;
+    flex-direction: column;
+}
+/* Headers */
+h1{
+    font-size: 2.5rem;
+    font-weight: 500;
+    padding-left: 1vw;
+    background-color: var(--midtone);
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: 500;
+    
+    width: max-content;
+    padding: 0 1vw;
+
+    text-align: left;
+    
+    color: var(--dark_tone);
+    background-color: var(--bright);
+}
+h3, h3, h4, h5, h6{
+    font-weight: 500;
+    width: max-content;
+    text-align: left;
+    padding: 0 1vw;
+    color: var(--dark_tone);
+    background-color: var(--bright);
+}
+
+b {font-weight: bolder;}
+em {font-style: italic;}
+mark {
+    background-color: rgb(from var(--accent_warm) r g b /0.35);
+    color: var(--brightest);
+}
+s {text-decoration: line-through;}
+
+a{
+    color: var(--accent_cool);
+}
+a:hover{
+    background-color: rgb(from var(--bright) r g b /0.5);
+}
+a:visited{
+    color: var(--accent_warm);
+}
+
+.button_home{
+    width: max-content;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    text-decoration: none;
+    
+}
+.button_home:visited{
+    color: var(--bright);
+}
+
+table{
+    margin: 0 auto;
+    font-size: 1.2rem;
+    background-color: rgb(from var(--dark_tone) r g b /0.8);
+    border-collapse: collapse;
+
+    td{
+        padding: 0.3rem;
+        text-align: center;
+        border: 1px solid var(--midtone);
+        color: var(--bright);
+    }
+    tr:first-child > td{
+        color: var(--brightest);
+        font-weight: 600;
+        
+        border: none;
+        border-right: 1px solid var(--midtone);
+    }
+    td:first-child{
+        text-align: right;
+        font-weight: 600;
+        color: var(--brightest);
+
+        border: none;
+        border-top: 1px solid var(--midtone);
+        border-bottom: 1px solid var(--midtone);
+    }
+}
+
+.figure{
+    display: flex;
+    flex-direction: column;
+
+    > * {
+        margin: 0 auto;
+        max-width: 75%;
+    }
+    img{
+        max-height: 35vh;
+        width: auto;
+        object-fit: cover;
+        image-rendering: optimizeQuality;
+    }
+    p{
+        text-align: center;
+        width: 100%;
+        
+        font-size: 1.1rem;
+        font-weight: 600;
+
+        color: var(--bright);
+        background-color: rgb(from var(--midtone) r g b /0.5);
+    }
+}
